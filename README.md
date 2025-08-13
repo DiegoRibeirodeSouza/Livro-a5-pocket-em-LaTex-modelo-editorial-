@@ -1,3 +1,7 @@
+Aqui está o `README.md` com as imagens de exemplo e o link para o PDF adicionados, conforme a localização dos seus arquivos.
+
+Substitua o conteúdo do seu `README.md` atual por este.
+
 -----
 
 # Modelo Editorial para Livro A5 (Pocket) em LaTeX
@@ -6,8 +10,20 @@ Um template de LaTeX focado em uma tipografia limpa e com uma estética editoria
 
 ## Exemplo de Saída
 
-Para ver o resultado final, baixe o PDF de exemplo.
-(É altamente recomendável que você adicione uma imagem ou screenshot do PDF aqui para que os usuários possam ver a qualidade da formatação.)
+Para que você possa visualizar o resultado final e a qualidade da formatação, disponibilizamos o PDF de exemplo.
+
+### Visualizar ou Baixar o PDF
+
+* [**Ver o PDF no navegador**](Resultado%20exemplo/exemplo-saida.pdf)
+* [**Baixar o PDF**](Resultado%20exemplo/exemplo-saida.pdf)
+
+### Prévia em Imagens
+
+Você também pode ver a prévia das páginas em formato de imagem abaixo:
+
+![Prévia da página 1](Resultado%20exemplo/preview1.png)
+![Prévia da página 2](Resultado%20exemplo/preview2.png)
+![Prévia da página 3](Resultado%20exemplo/preview3.png)
 
 ## Funcionalidades Principais
 
@@ -61,32 +77,9 @@ O projeto está organizado da seguinte forma:
 
 ### Compilação
 
-Este modelo requer a compilação com **LuaLaTeX** e a ferramenta **biber** para a bibliografia. Siga estes passos para gerar o PDF final:
+Para compilar este modelo, basta usar o **LuaLaTeX** e o **biber**.
 
-1.  **Compile o arquivo principal com LuaLaTeX:**
-    ```bash
-    lualatex main.tex
-    ```
-2.  **Gere a bibliografia com biber:**
-    ```bash
-    biber main
-    ```
-3.  **Compile novamente com LuaLaTeX para que as referências sejam incluídas:**
-    ```bash
-    lualatex main.tex
-    ```
-4.  **(Opcional) Compile uma terceira vez para garantir que o sumário, referências cruzadas, etc., estejam corretos:**
-    ```bash
-    lualatex main.tex
-    ```
-
-Como alternativa, você pode usar a ferramenta `latexmk` para automatizar este processo. Edite o arquivo `.latexmkrc` ou use a flag `-lualatex`:
-
-```bash
-latexmk -lualatex main.tex
-```
-
-## Como Customizar
+### Como Customizar
 
   * **Título e Autor**: Edite o arquivo `main.tex` para alterar o título, autor e outras informações do livro.
   * **Estilo Visual**: O arquivo `misc/options.sty` contém a maioria das configurações de fontes, cores, e layout. Edite-o com cuidado para fazer alterações de estilo.
