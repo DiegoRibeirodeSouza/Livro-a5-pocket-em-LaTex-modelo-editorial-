@@ -54,7 +54,7 @@ desktop.ini
 
 ### Extras ###
 # Comente a linha abaixo se quiser versionar PDFs
-*.pdf
+#*.pdf
 
 # Arquivos de pacotes (se não forem personalizados)
 *.cls
