@@ -1,7 +1,3 @@
-Ótima ideia\! Adicionar as fontes utilizadas é crucial para que outros usuários consigam compilar o documento exatamente como você o projetou. Isso evita erros e garante a reprodução fiel do seu template.
-
-Abaixo está o `README.md` atualizado, com uma nova seção de **Fontes Necessárias** e uma revisão na seção de Pré-requisitos para deixar a informação mais clara.
-
 -----
 
 # Modelo Editorial para Livro A5 (Pocket) em LaTeX
