@@ -21,9 +21,10 @@ Para que você possa visualizar o resultado final e a qualidade da formatação,
 
 Você também pode ver a prévia das páginas em formato de imagem abaixo:
 
-![Prévia da página 1](Resultado%20exemplo/preview1.png)
-![Prévia da página 2](Resultado%20exemplo/preview2.png)
-![Prévia da página 3](Resultado%20exemplo/preview3.png)
+![Prévia da página 1](Resultado%20exemplo/Preview1.png)
+![Prévia da página 2](Resultado%20exemplo/Preview2.png)
+![Prévia da página 3](Resultado%20exemplo/Preview3.png)
+
 
 ## Funcionalidades Principais
 
