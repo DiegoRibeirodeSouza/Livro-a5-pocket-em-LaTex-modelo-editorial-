@@ -1,0 +1,34 @@
+% =======================================================
+% PÁGINA DE DIREITOS AUTORAIS (PADRÃO EDITORIAL REFINADO)
+% =======================================================
+\cleardoublepage % Garante que a página comece em uma página ímpar
+\thispagestyle{empty} % Remove o número de página desta folha
+\vspace*{\fill} % Espaço flexível no topo
+
+\begin{center}
+	\begin{minipage}{0.8\textwidth}
+		\linespread{1.1}\selectfont % Ajusta o espaçamento entre linhas
+		
+		\footnotesize % Tamanho da fonte para a maioria do texto
+		
+		\textbf{Copyright \textcopyright\ \the\year\ \authorname} \\
+		Todos os direitos reservados. \\
+		Nenhuma parte deste livro pode ser reproduzida ou usada de forma alguma sem a permissão expressa do autor, exceto para o uso de citações em resenhas ou críticas. \\[1em]
+		
+		\ifx\isbn\undefined\else
+		\textbf{ISBN:} \isbn \\[1em]
+		\fi
+		
+		\textbf{Editora:} \publisher \\[0.5em]
+		[Endereço da editora, se necessário] \\[0.5em]
+		[Telefone e E-mail da editora] \\[0.5em]
+		[Site da editora] \\[2em]
+		
+		% Inclusão do logo (garantir que a imagem exista)
+		\includegraphics[width=1cm]{frontmatter/logo-black.png} % Ajustei a largura do logo para um tamanho comum
+		
+	\end{minipage}
+\end{center}
+
+\vspace*{\fill} % Espaço flexível na parte inferior
+\cleardoublepage % Garante que a próxima página seja uma página ímpar

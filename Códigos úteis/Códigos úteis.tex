@@ -1,0 +1,104 @@
+
+
+
+_________Deixa a \part sem número no sumário_______________
+
+
+
+%%%%%% Definição da \part{title} 
+\makeatletter
+% Modifica como as partes são adicionadas ao sumário
+\renewcommand\part{%
+	\if@openright\cleardoublepage\else\clearpage\fi
+	\thispagestyle{plain}%
+	\if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
+	\null\vfil
+	\secdef\@part\@spart}
+
+\def\@part[#1]#2{%
+	\ifnum \c@secnumdepth >-2\relax
+	\refstepcounter{part}%
+	\addcontentsline{toc}{part}{#1} % Adiciona apenas o título
+	\else
+	\addcontentsline{toc}{part}{#1}%
+	\fi
+	\markboth{}{}%
+	{\centering
+		\interlinepenalty \@M
+		\normalfont
+		\ifnum \c@secnumdepth >-2\relax
+		\huge\bfseries \partname\nobreakspace\thepart
+		\par
+		\vskip 20\p@
+		\fi
+		\Huge \bfseries #2\par}%
+	\@endpart}
+\makeatother
+
+
+
+
+
+
+
+_________Deixa a \part sem número no sumário e corpo do texto_______________
+
+%%%%%% Definição da \part{title} 
+% Configuração do sumário (remove número das partes)
+\setlength{\cftpartnumwidth}{0pt}
+\renewcommand{\cftpartpresnum}{}
+\renewcommand{\cftpartaftersnum}{}
+
+% Remove "Parte I" do corpo do texto
+\makeatletter
+\renewcommand{\@part}[2][?]{%
+	\ifnum \c@secnumdepth >-2\relax
+	\refstepcounter{part}%
+	\addcontentsline{toc}{part}{#2}%
+	\else
+	\addcontentsline{toc}{part}{#2}%
+	\fi
+	\markboth{}{}%
+	{\centering
+		\interlinepenalty \@M
+		\normalfont
+		\Huge \bfseries #2\par}%
+	\@endpart
+}
+\makeatother
+
+
+
+
+
+
+
+
+
+
+
+
+
+_________codigo a ser avaliado (espaçamentos úteis)_______________
+
+
+% Tente esta abordagem mais direta para remover o número da parte
+\renewcommand{\cftpartpresnum}{}          % Remove o que vem ANTES do número (ex: "Parte")
+\renewcommand{\cftpartfont}{\large\bfseries} % Define a fonte do título da parte
+\renewcommand{\cftpartpagefont}{\bfseries}   % Define a fonte do número da página
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % Linha pontilhada
+\renewcommand{\cftpartafterpnum}{\par\addvspace{10pt}} % Espaço após a entrada
+
+% Comando principal: Redefine o formato do número para não exibir nada
+\makeatletter
+\renewcommand{\@cftmakepartnum}[1]{}
+\makeatother
+
+
+
+
+
+
+
+
+

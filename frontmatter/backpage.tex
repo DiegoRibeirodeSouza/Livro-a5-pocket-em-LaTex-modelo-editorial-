@@ -1,0 +1,46 @@
+\pagestyle{empty}  % Disable headers and footers on this page
+
+\cleardoublepage    % Ensure the following content starts on a right-hand page in double-sided layouts
+
+
+
+% =================
+% Back cover design
+% =================
+\begin{center}
+	\begin{tikzpicture}[remember picture, overlay]
+		% Fundo sóbrio
+		\fill[black] (current page.south west) rectangle (current page.north east);
+		
+		% Elemento central minimalista
+	
+		
+		% Área de texto (3 parágrafos)
+		\node[white!85, text width=0.65\paperwidth, align=justify, font=\small, 
+		anchor=center] at ([yshift=0.5cm] current page.center) {
+			\textsc{Este livro aborda a interseção entre filosofia e espiritualidade, explorando como os grandes pensadores da história contemplaram os mistérios da existência.}
+			
+			\vspace{0.3cm}
+			\textsc{A obra conduz o leitor por uma jornada reflexiva, desde os pré-socráticos até os pensadores contemporâneos, estabelecendo diálogos com as tradições espirituais orientais e ocidentais.}
+			
+			\vspace{0.3cm}
+			\textsc{Com linguagem acessível mas profunda, o autor oferece novas perspectivas sobre a natureza da consciência e nosso lugar no cosmos.}
+		};
+		
+		% Elementos decorativos inferiores
+		\foreach \x in {0.5,0.7,0.9} {
+			\draw[white!15, line width=0.2pt] 
+			([xshift=-\x*4cm, yshift=-4cm] current page.center) -- 
+			([xshift=\x*4cm, yshift=-4cm] current page.center);
+		}
+		
+		% Informações editoriais (parte inferior)
+		\node[white!60, font=\tiny, anchor=south west] 
+		at ([xshift=1.5cm, yshift=1cm] current page.south west) 
+		{ISBN 978-XX-XXXXX-XX-X};
+		
+		\node[white!60, font=\tiny, anchor=south east] 
+		at ([xshift=-1.5cm, yshift=1cm] current page.south east) 
+		{\publisher};
+	\end{tikzpicture}
+\end{center}

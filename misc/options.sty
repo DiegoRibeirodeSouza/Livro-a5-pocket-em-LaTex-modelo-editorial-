@@ -1,0 +1,134 @@
+% =========================================================================
+% CONFIGURAÇÕES GERAIS E QUALIDADE TIPOGRÁFICA
+% =========================================================================
+
+% Pacote microtype: Melhora a qualidade tipográfica do texto.
+% Ajusta o espaçamento entre caracteres (kerning), palavras (spacing) e o rastreamento (tracking).
+% Isso ajuda a evitar linhas "soltas" e melhora a justificação.
+
+% Pacote babel: Configurações de idioma e hifenização para Português do Brasil.
+\usepackage[brazilian]{babel}
+% Personaliza o título do sumário para "Sumário" (padrão do babel em português é "Índice" para sumário).
+\addto\captionsbrazilian{\renewcommand{\contentsname}{Sumário}}
+
+% Comando personalizado para ajuste fino de espaçamento.
+% Útil para ajustar o espaço em casos específicos, como aspas aninhadas.
+\newcommand{\hsp}{\kern 1pt}
+
+% Comando sloopy: Permite que o LaTeX seja mais flexível com o espaçamento.
+% Ajuda a evitar avisos de 'Overfull \hbox' (linhas que ultrapassam a margem direita).
+% Pode levar a um espaçamento menos uniforme se usado excessivamente.
+\sloppy
+
+% =========================================================================
+% FONTES E AJUSTES DE PARÁGRAFO
+% =========================================================================
+
+% Pacotes de fontes (comentados por estarem definidos no 'main.tex' ou serem redundantes)
+% \usepackage{mathpazo} % <-- Fonte Palatino (texto e matemática).
+% \usepackage{newtxtext} % <-- Fonte Times New Roman (texto).
+% \usepackage{newtxmath} % <-- Fonte Times New Roman (matemática).
+% Cuidado: Se já definidos no main.tex, descomentá-los aqui pode causar conflitos ou duplicações.
+
+% Espaçamento entre linhas (baselinestretch):
+% Aumenta o espaçamento padrão das linhas para 1.125 vezes o normal, melhorando a legibilidade.
+% Nota: \linespread{1.1} foi comentado, pois \renewcommand{\baselinestretch} é o método preferido.
+\renewcommand{\baselinestretch}{1.125}
+
+% Espaçamento entre parágrafos:
+\setlength{\parskip}{0pt}   % Remove o espaço vertical extra entre parágrafos.
+\setlength{\parindent}{0.7cm} % Define o recuo da primeira linha de cada parágrafo para 0.7cm.
+
+% Espaçamento de sentenças:
+% Previne espaços extras após os pontos finais (comum em tipografia de estilo anglo-saxão),
+% garantindo um espaçamento mais uniforme após pontuações.
+\frenchspacing
+
+% Controle de "viúvas" e "órfãs":
+% Previni que a última linha de um parágrafo ("viúva") apareça sozinha no topo de uma página,
+% ou que a primeira linha de um parágrafo ("órfã") apareça sozinha no final de uma página.
+% Valores altos (10000) forçam o LaTeX a evitar esses casos a todo custo.
+\widowpenalty=10000
+\clubpenalty=10000
+
+% =========================================================================
+% PACOTES PARA INCLUSÃO DE ELEMENTOS VISUAIS E GRÁFICOS
+% =========================================================================
+
+% Pacote lettrine: Permite criar capitulares (letras grandes no início de capítulos).
+\usepackage{lettrine}
+% Pacote graphicx: Padrão para incluir imagens e gráficos no documento.
+\usepackage{graphicx}
+% Pacote xcolor: Permite definir e usar cores personalizadas.
+\usepackage{xcolor}
+
+% Pacote TikZ: Poderosa biblioteca para criação de desenhos vetoriais diretamente no LaTeX.
+\usepackage{tikz}
+% Carrega submódulos do TikZ para funcionalidades específicas.
+\usetikzlibrary{math,positioning,shadows.blur}
+% Pacote url: Para formatar corretamente URLs e endereços de internet.
+\usepackage{url}
+% Pacote pgfornament: Adiciona ornamentos e decorações tipográficas.
+\usepackage{pgfornament}
+
+% =========================================================================
+% CONFIGURAÇÕES DE LAYOUT DA PÁGINA (PACOTE GEOMETRY)
+% =========================================================================
+
+% Pacote geometry: Permite controlar com precisão as dimensões da página e das margens.
+\usepackage[
+paperwidth=128.5mm,  % Largura total da página (e.g., padrão para livro A5 da Amazon KDP).
+paperheight=198.4mm, % Altura total da página (compatível com impressão sob demanda).
+%textwidth=94mm,      % Largura da área de texto (onde o conteúdo é escrito).
+%textheight=160mm,    % Altura da área de texto (onde o conteúdo é escrito).
+inner=20mm,          % Margem interna (próxima à encadernação). Mais larga para livros.
+outer=15mm,          % Margem externa (lado oposto à encadernação).
+top=20mm,            % Margem superior da página.
+bottom=20mm,         % Margem inferior da página.
+twoside=true,        % Ativa o layout de página dupla (margens internas/externas alternam).
+bindingoffset=0mm,   % Espaço extra para encadernação (0mm se já incluso na margem 'inner').
+includehead=false,   % Altura do cabeçalho não é incluída no cálculo da textheight.
+includefoot=false,   % Altura do rodapé não é incluída no cálculo da textheight.
+headheight=0pt,      % Altura definida para o cabeçalho (0pt significa que não há espaço reservado).
+footskip=28pt,       % Distância da base do texto até a base do rodapé (inclui números de página, notas, etc.).
+footnotesep=3pt      % Espaço vertical entre as notas de rodapé e a linha acima delas.
+]{geometry}
+
+% === AJUSTES MANUAIS PARA NOTAS DE RODAPÉ ===
+% Esses comandos são usados para refinar o espaço das notas de rodapé após as configurações iniciais do geometry.
+\addtolength{\textheight}{-12pt} % Reduz a altura da área de texto em 12pt para 'empurrar' o rodapé para baixo,
+% criando mais espaço para as notas de rodapé sem que elas "invadam" o texto.
+\setlength{\skip\footins}{10pt}   % Define o espaço vertical entre o corpo do texto e a linha divisória das notas.
+
+% =========================================================================
+% CONFIGURAÇÕES DE CABEÇALHO E RODAPÉ (PACOTE FANCYHDR)
+% =========================================================================
+
+% Pacote fancyhdr: Permite personalizar cabeçalhos e rodapés de forma avançada.
+\usepackage{fancyhdr}
+% Define a altura da área do cabeçalho.
+\setlength{\headheight}{15pt}
+% Aplica o estilo de página 'fancy', que permite personalização.
+\pagestyle{fancy}
+% Limpa todos os campos de cabeçalho e rodapé para começar do zero.
+\fancyhf{}
+
+% Remove a linha horizontal que aparece por padrão no cabeçalho.
+\renewcommand{\headrulewidth}{0pt}
+
+% Define o posicionamento dos elementos no cabeçalho/rodapé:
+% [CFE,CFO]{\thepage}    -> Número da página centralizado no rodapé (C) para páginas pares (FE) e ímpares (FO).
+\fancyhf[CFE,CFO]{\thepage}
+% [CE]{\itshape\authorname} -> Nome do autor centralizado (C) no cabeçalho (E) para páginas pares (E), em itálico.
+\fancyhead[CE]{\itshape\authorname}
+% [CO]{\itshape\booktitle}  -> Título do livro centralizado (C) no cabeçalho (O) para páginas ímpares (O), em itálico.
+\fancyhead[CO]{\itshape\booktitle}
+
+% =========================================================================
+% DEFINIÇÕES DE CORES PERSONALIZADAS
+% =========================================================================
+
+% Define cores usando o modelo RGB (Red, Green, Blue).
+\definecolor{customgold}{RGB}{203,161,53} % Um tom de dourado.
+\definecolor{darkmagenta}{RGB}{139, 0, 139} % Magenta escuro.
+\definecolor{ultradarkmagenta}{RGB}{50, 0, 50} % Um magenta muito escuro.

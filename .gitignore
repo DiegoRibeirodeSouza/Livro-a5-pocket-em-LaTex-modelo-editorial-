@@ -1,0 +1,60 @@
+### Arquivos gerados pelo LaTeX ###
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex*
+*.toc
+*.nav
+*.snm
+*.vrb
+*.latexmkrc
+*.dvi
+*.bcf
+*.main.bcf-SAVE-ERROR
+*.bcf
+*.bcf-SAVE-ERROR
+*.SAVE-ERROR
+
+
+
+### Arquivos do BibTeX/Biber ###
+*.bib.bak
+*.bbl.aux
+
+### Arquivos temporários/backups ###
+*~
+*.backup
+*.swp
+*.swo
+*.tmp
+*.bak
+
+### Editor/IDE ###
+.vscode/
+.vscodium/
+*.code-workspace
+*.stackdump
+
+### Sistemas operacionais ###
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### Git ###
+*.orig
+*.rej
+
+### Extras ###
+# Comente a linha abaixo se quiser versionar PDFs
+*.pdf
+
+# Arquivos de pacotes (se não forem personalizados)
+*.cls

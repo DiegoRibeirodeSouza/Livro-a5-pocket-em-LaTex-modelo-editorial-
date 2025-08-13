@@ -1,0 +1,378 @@
+% =========================================================================
+% CLASSE DO DOCUMENTO E PACOTES BÁSICOS
+% =========================================================================
+\documentclass[12pt,openright]{book}  % Classe para livros, com capítulos começando sempre em páginas ímpares
+
+\usepackage{layouts}         % Para inspecionar margens e layout visual
+\usepackage{lipsum}          % Gera texto fictício (Lorem Ipsum) para testes
+\usepackage{etoolbox}        % Ferramentas de programação condicional em LaTeX
+\usepackage{setspace}        % Controle de espaçamento entre linhas
+\usepackage{epigraph}        % Pacote para adicionar epígrafes
+\usepackage{ragged2e}    
+\usepackage{tabularx}   
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{todonotes}
+
+
+
+
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+
+
+\setmainfont{Sabon MT Std}[
+UprightFont = sabon-mt-std.otf,
+ItalicFont = sabon-mt-std-italic.otf,
+BoldFont = sabon-mt-std-semibold.otf,
+BoldItalicFont = sabon-mt-std-semibold-italic.otf
+]
+\setsansfont{Urbanist-SemiBold}
+\setmonofont{Source Code Pro}
+\setmathfont{Latin Modern Math}
+
+% =========================================================================
+% FORMATAÇÃO DE TÍTULOS
+% =========================================================================
+\usepackage{titlesec}        % Permite personalizar títulos de capítulos e seções
+
+% Numeração em algarismos romanos hierárquicos
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\thechapter.\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\Roman{subsubsection}}
+
+% ----------------------------------------
+% Formatação dos títulos dos capítulos
+% ----------------------------------------
+\titleformat{\chapter}[block]
+{\normalfont\large\bfseries\raggedleft}
+{\thechapter\\}
+{0pt}
+{}
+\titlespacing*{\chapter}{0pt}{0pt}{1em}
+
+% Redefine visual do cabeçalho de capítulo
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+	\vspace*{60pt}
+	{\centering\normalfont\sffamily\large\bfseries
+		\thechapter\par}
+	\vspace{0.6em}
+	{\centering\hrule height 0.5pt width 0.2\textwidth}
+	\vspace{1em}
+	{\raggedleft\normalfont\sffamily\large\bfseries
+		#1\par\nobreak}
+	\vspace{2.5em}
+}
+
+
+
+% Formatação das seções e subseções com fonte sans-serif
+\titleformat{\section}
+{\normalfont\sffamily\normalsize\bfseries}
+{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus .1ex minus .2ex}{1ex plus .1ex}
+
+\titleformat{\subsection}
+{\normalfont\sffamily\normalsize\bfseries}
+{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{1ex plus .1ex}
+
+\titleformat{\subsubsection}
+{\normalfont\sffamily\normalsize\bfseries}
+{\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{1.5ex plus .1ex minus .2ex}{1ex plus .1ex}
+
+% =========================================================================
+% CONFIGURAÇÃO DO SUMÁRIO (TABLE OF CONTENTS)
+% =========================================================================
+\usepackage{tocloft} % Personalização do sumário (ToC)
+
+% Título do sumário
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\large\sffamily\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+% Capítulos no sumário
+\renewcommand{\cftchapfont}{\normalfont\normalsize\rmfamily\raggedleft}
+\renewcommand{\cftchappagefont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftchapindent}{0em}
+\setlength{\cftchapnumwidth}{2.9em}
+\renewcommand{\cftchapaftersnum}{\hspace{0.5em}} % Espaço após o número do capítulo
+
+% Seções
+\renewcommand{\cftsecfont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftsecpagefont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsecindent}{0.9em}
+\setlength{\cftsecnumwidth}{3.5em}
+\renewcommand{\cftsecaftersnum}{\hspace{0.9em}} % Espaço após o número da seção
+
+% Subseções
+\renewcommand{\cftsubsecfont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftsubsecpagefont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsubsecindent}{1.2em}
+\setlength{\cftsubsecnumwidth}{2.5em}
+\renewcommand{\cftsubsecaftersnum}{\hspace{0.7em}} % Espaço após o número da subseção
+
+% Subsubseções
+\renewcommand{\cftsubsubsecfont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftsubsubsecindent}{5.4em}
+\setlength{\cftsubsubsecnumwidth}{2.0em}
+\renewcommand{\cftsubsubsecaftersnum}{\hspace{0.7em}} % Espaço após o número da subsubseção
+
+% Partes
+\renewcommand{\cftpartfont}{\normalfont\normalsize\rmfamily\bfseries}
+\renewcommand{\cftpartpagefont}{\normalfont\normalsize\rmfamily}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftpartindent}{0em}
+\setlength{\cftpartnumwidth}{2.5em}
+\renewcommand{\cftpartaftersnum}{\hspace{0.5em}}
+
+% Espaçamento vertical entre entradas no sumário
+\setlength{\cftbeforechapskip}{5pt}
+\setlength{\cftbeforesecskip}{5pt}
+\setlength{\cftbeforesubsecskip}{5pt}
+\setlength{\cftbeforepartskip}{1\baselineskip}  
+
+
+% =========================================================================
+% FORMATAÇÃO DE PARTES
+% =========================================================================
+\renewcommand\part{%
+	\if@openright\cleardoublepage\else\clearpage\fi
+	\thispagestyle{plain}%
+	\if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
+	\null\vfil
+	\secdef\@part\@spart}
+
+\makeatletter
+\def\@part[#1]#2{%
+	\ifnum \c@secnumdepth >-2\relax
+	\refstepcounter{part}%
+	\addcontentsline{toc}{part}{\protect\partname\ \thepart: #1}% <-- LINHA CORRIGIDA
+	\else
+	\addcontentsline{toc}{part}{#1}%
+	\fi
+	\markboth{}{}%
+	\vspace*{60pt}
+	{\raggedleft\normalfont\sffamily\large\bfseries % Alterado de \centering para \raggedleft
+		\partname\nobreakspace\thepart\par}
+	\vspace{0.6em}
+	\vspace{1em}
+	{\raggedleft\normalfont\sffamily\large\bfseries
+		#2\par\nobreak}
+	\vspace{2.5em}
+	\@endpart}
+\makeatother
+% =========================================================================
+% CONFIGURAÇÃO DAS CITAÇÕES LONGAS (BLOCO DE QUOTE)
+% =========================================================================
+\makeatletter
+\renewenvironment{quote}{%
+	\par
+	\addvspace{0.58\baselineskip}%
+	\small
+	\setstretch{0.9}%
+	\list{}{%
+		\leftmargin=1.4cm
+		\rightmargin=0cm
+		\parsep=0pt
+		\itemsep=0pt
+		\topsep=0pt
+		\partopsep=0pt
+	}%
+	\item\relax
+}{%
+	\endlist%
+	\addvspace{0.4\baselineskip}%
+	\par
+}
+\makeatother
+
+% =========================================================================
+% CONFIGURAÇÕES DA BIBLIOGRAFIA E CITAÇÕES
+% =========================================================================
+\usepackage{csquotes}  % Recomendado pelo biblatex para citações apropriadas
+
+
+
+\usepackage[
+style=verbose-ibid,  % Estilo com repetições ibid.
+backend=biber,
+citetracker=true,
+ibidtracker=true
+]{biblatex}
+\addbibresource{referencias.bib}  % Base de dados bibliográficos
+
+
+% Redefine a macro interna que exibe o título e subtítulo.
+
+
+\DeclareFieldFormat{title}{\emph{#1}}
+% Isso permite um controle mais granular.
+\renewbibmacro*{title}{%
+	\iffieldundef{title}
+	{} % Faz nada se não houver título
+	{%
+		% Imprime o título principal (já configurado para itálico por \DeclareFieldFormat{title})
+		\printfield{title}%
+		% Se houver subtítulo, adiciona a pontuação e imprime em fonte normal.
+		\iffieldundef{subtitle}
+		{}
+		{%
+			\setunit{\subtitlepunct}% % Adiciona a pontuação entre título e subtítulo (geralmente dois pontos)
+			\normalfont\printfield{subtitle}% % <--- Aqui o subtítulo é forçado a ser normal
+		}%
+		\newunit%
+	}%
+}
+
+
+
+% Título da bibliografia e entrada no sumário
+\defbibheading{bibliography}[\refname]{%
+	{\raggedleft\normalfont\sffamily\large\bfseries
+		#1\par\nobreak}
+	\vspace{1em}
+	\addcontentsline{toc}{chapter}{#1}
+}
+
+% --- Formatação dos nomes ---
+\DeclareNameAlias{default}{family-given} % Formato "SOBRENOME, Nome"
+\DeclareNameAlias{sortname}{family-given} % Para ordenação alfabética
+\DeclareNameAlias{labelname}{family-given} % Para citações no texto
+
+% --- Sobrenome em maiúsculas, nome normal ---
+
+\renewcommand*{\mkbibnameprefix}[1]{#1} % Prefixos (ex: "da", "de")
+\renewcommand*{\mkbibnamesuffix}[1]{#1} % Sufixos (ex: "Júnior")
+
+% --- Estilo de exibição ---
+\DeclareNameFormat{family-given}{%
+	\nameparts{#1}%
+	\usebibmacro{name:family-given}%
+	{\MakeUppercase{\namepartfamily}} % Sobrenome MAIÚSCULO
+	{\namepartgiven}                 % Nome normal
+	{\namepartprefix}%
+	{\namepartsuffix}%
+	\usebibmacro{name:andothers}%
+}
+
+% Tradução do título da bibliografia
+\DefineBibliographyStrings{brazil}{
+	bibliography = {Referências},
+}
+
+% =========================================================================
+% CONFIGURAÇÕES DE NOTAS DE RODAPÉ
+% =========================================================================
+\counterwithout{footnote}{chapter}  % Notas com numeração contínua entre capítulos
+\usepackage[hang]{footmisc}         % Alinhamento pendente nas notas
+\setlength{\footnotesep}{12pt}
+\setlength{\footnotemargin}{0pt}
+
+% Estética das notas
+\makeatletter
+\renewcommand\@makefntext[1]{%
+	\noindent
+	{\footnotesize\textsuperscript{\@thefnmark}}%
+	\hspace{0.3em}#1%
+}
+\makeatother
+
+% =========================================================================
+% METADADOS DO LIVRO
+% =========================================================================
+
+
+% Definições reutilizáveis no documento
+\newcommand{\authorname}{Diego Ribeiro de Souza}
+\newcommand{\translatorname}{--}
+\newcommand{\booktitle}{Filosofia e Espiritismo}
+\newcommand{\subtitle}{Ensaios Sobre os Rumos das Civilizações}
+\newcommand{\publisher}{KDP}
+\newcommand{\editionyear}{2025}
+\newcommand{\isbn}{123-456-789-0}
+
+\usepackage{misc/options}  % Configurações opcionais adicionais do usuário
+
+% --- Redefine o formato da epígrafe para justificar o texto ---
+\makeatletter
+\renewcommand{\@epitext}[1]{
+	\begin{minipage}{\epigraphwidth}
+		\justify % Justifica o texto
+		#1
+\end{minipage}}
+\makeatother
+
+
+
+% =========================================================================
+% INÍCIO DO DOCUMENTO
+% =========================================================================
+\begin{document}
+	
+	% Páginas iniciais com numeração romana (índice, prefácio, etc.)
+	\frontmatter
+	\input{frontmatter/titlepage}     % Página de título
+	\input{frontmatter/copyrightpage} % Página de direitos autorais
+	\input{frontmatter/preface}       % Prefácio
+	\input{frontmatter/tocpage}       % Sumário
+	
+	% Conteúdo principal com numeração normal
+	\mainmatter
+	\pagestyle{fancy}
+	\setcounter{page}{13}             % Define o número da primeira página do conteúdo
+	\input{Parte 1}                   % Insere conteúdo da Parte 1
+	
+	% \backmatter opcional, se desejar separar apêndices ou posfácio
+	
+% =========================================================================
+% BIBLIOGRAFIA E FINALIZAÇÃO (VERSÃO FINAL AJUSTADA)
+% =========================================================================
+
+\backmatter
+
+% Formatação manual do capítulo de referências
+\clearpage
+\thispagestyle{plain}
+
+% Título alinhado à direita, sem maiúsculas, com mesmo estilo dos capítulos
+\vspace*{60pt}%
+{\raggedleft\normalfont\sffamily\large\bfseries
+	Referências\par}
+\vspace{0.6em}%
+{\raggedleft\hrule height 0.5pt width 0.2\textwidth\par}
+\vspace{1em}%
+
+% Adiciona ao sumário
+\addcontentsline{toc}{chapter}{Referências}
+
+% Imprime as referências
+\printbibliography[heading=none]
+
+% 2. PÁGINA EM BRANCO APÓS REFERÊNCIAS (SEM NÚMERO)
+\clearpage % Não usa \cleardoublepage para não forçar página ímpar
+\pagestyle{empty} % Remove TODOS os cabeçalhos/rodapés
+\hbox{} % Conteúdo vazio
+\newpage % Força nova página
+
+
+% Contracapa (opcional)
+\cleardoublepage
+\pagestyle{fancy}
+
+\input{frontmatter/backpage}
+\label{LastPage}
+
+
+	
+\end{document}
